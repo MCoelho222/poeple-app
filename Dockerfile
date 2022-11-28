@@ -8,16 +8,16 @@ ENV PYTHONUNBUFFERED True
 
 # Copy local code to the container image.
 ENV APP_HOME /app
-ENV FLASK_APP=app.py
-ENV FLASK_ENV=development
-ENV FLASK_DEBUG=True
-ENV FLASK_RUN_HOST=0.0.0.0
-ENV FLASK_RUN_PORT=8080
-ENV SECRET_KEY=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
-ENV OAUTHLIB_INSECURE_TRANSPORT=1
-ENV FRONTEND_URL=https://mcoelho-people.web.app/
-ENV BACKEND_URL=http://localhost:5000/
-ENV PORT=8080
+# ENV FLASK_APP=app.py
+# ENV FLASK_ENV=development
+# ENV FLASK_DEBUG=True
+# ENV FLASK_RUN_HOST=0.0.0.0
+# ENV FLASK_RUN_PORT=8080
+# ENV SECRET_KEY=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
+# ENV OAUTHLIB_INSECURE_TRANSPORT=1
+# ENV FRONTEND_URL=https://mcoelho-people.web.app/
+# ENV BACKEND_URL=http://localhost:5000/
+ENV PORT=3000
 WORKDIR $APP_HOME
 # COPY . ./
 
@@ -34,8 +34,6 @@ RUN pip install gunicorn
 COPY . ./
 
 RUN pip3 install -r requirements.txt
-
-EXPOSE 8080
 
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
 
