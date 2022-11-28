@@ -29,8 +29,10 @@ ENV PORT=8080
 WORKDIR /app
 COPY . .
 RUN pip3 install -r requirements.txt
+RUN pip3 install gunicorn
+
 EXPOSE 8080
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
-CMD [ "python3", "app.py" ]
-# CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+# CMD [ "python3", "app.py" ]
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
