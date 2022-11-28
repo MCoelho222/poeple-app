@@ -1,6 +1,8 @@
-# People Contacts
+# Super OrgContact
 
-This is the back-end application for the People Contacts app. 
+This is the backend application of the Super OrgContact project.
+
+Access to frontend: [Super OrgContact frontend](https://mcoelho-people.web.app)
 
 ## Project setup
 ```
