@@ -36,7 +36,7 @@ COPY . ./
 RUN pip3 install -r requirements.txt
 
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
-
+ENTRYPOINT app.py
 USER appuser
 CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
 
