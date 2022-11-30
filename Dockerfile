@@ -55,4 +55,4 @@ RUN pip3 install -r gunicorn
 RUN poetry config virtualenvs.create false \
 && poetry install --no-interaction --no-ansi
 COPY . .
-CMD gunicorn --bind 0.0.0.0:$PORT app:app
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
