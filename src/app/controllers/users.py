@@ -15,7 +15,7 @@ from src.app.utils import verify_token
 from src.app.utils import generate_jwt
 
 
-secrets = os.getenv('GOOGLE_CLIENT_SECRETS')
+secrets = os.environ['GOOGLE_CLIENT_SECRETS']
 SCOPES = [
     "openid",
     'https://www.googleapis.com/auth/contacts.readonly',
