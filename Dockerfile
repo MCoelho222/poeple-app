@@ -42,7 +42,7 @@
 # # CMD [ "python3", "app.py" ]
 # CMD [ "poetry", "run", "flask", "run", "--host=0.0.0.0" ]
 
-FROM python:3.10
+FROM python:3.10-slim
 # COPY . /src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -52,8 +52,8 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
-# COPY poetry.lock /app
-# COPY pyproject.toml /app
+COPY poetry.lock /app
+COPY pyproject.toml /app
 RUN poetry config virtualenvs.create false \
 && poetry install --no-interaction --no-ansi
 COPY . .
