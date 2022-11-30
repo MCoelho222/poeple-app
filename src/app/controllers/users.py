@@ -32,7 +32,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 flow = Flow.from_client_config(
     client_config=json.loads(CLIENT_SECRETS_FILENAME), 
     scopes=SCOPES, 
-    redirect_uri="http://localhost:5000/users/callback"
+    redirect_uri="https://mcoelho-contacts-4feilbi6na-rj.a.run.app/users/callback"
 )
 
 
