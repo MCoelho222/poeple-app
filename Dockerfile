@@ -47,11 +47,13 @@ COPY . /src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV POETRY_VERSION 1
-RUN pip3 install "poetry==$POETRY_VERSION"
-RUN pip3 install gunicorn
+# RUN pip3 install "poetry==$POETRY_VERSION"
+# RUN pip3 install gunicorn
 WORKDIR /app
-COPY poetry.lock /app
-COPY pyproject.toml /app
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+# COPY poetry.lock /app
+# COPY pyproject.toml /app
 RUN poetry config virtualenvs.create false \
 && poetry install --no-interaction --no-ansi
 COPY . .
