@@ -46,13 +46,13 @@ FROM python:3.10
 COPY . /src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV POETRY_VERSION 1.0
-ENV PORT=5000
+ENV POETRY_VERSION 1
 RUN pip install "poetry==$POETRY_VERSION"
 WORKDIR /app
 COPY poetry.lock /app
 COPY pyproject.toml /app
+RUN pip3 install -r gunicorn
 RUN poetry config virtualenvs.create false \
 && poetry install --no-interaction --no-ansi
 COPY . .
-CMD gunicorn --bind 0.0.0.0:5000 app:app
+CMD gunicorn --bind 0.0.0.0:$PORT app:app
