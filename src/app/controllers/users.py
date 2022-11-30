@@ -15,7 +15,7 @@ from src.app.utils import verify_token
 from src.app.utils import generate_jwt
 
 
-CLIENT_SECRETS_FILENAME = os.getenv('GOOGLE_CLIENT_SECRETS')
+secrets = os.getenv('GOOGLE_CLIENT_SECRETS')
 SCOPES = [
     "openid",
     'https://www.googleapis.com/auth/contacts.readonly',
@@ -29,7 +29,7 @@ users = Blueprint("users", __name__,  url_prefix="/users")
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 flow = Flow.from_client_config(
-    client_config=json.loads(CLIENT_SECRETS_FILENAME), 
+    client_config=json.loads(secrets), 
     scopes=SCOPES, 
     redirect_uri="http://localhost:5000/users/callback"
 )
